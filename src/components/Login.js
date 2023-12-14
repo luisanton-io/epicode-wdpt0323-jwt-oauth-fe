@@ -13,16 +13,19 @@ function Login() {
    const handleLogin = async (e) => {
       e.preventDefault()
 
-      const response = await fetch("http://localhost:3030/users/session", {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify({
-            email,
-            password,
-         }),
-      })
+      const response = await fetch(
+         `${process.env.REACT_APP_BACKEND_ENDPOINT}/users/session`,
+         {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               email,
+               password,
+            }),
+         }
+      )
 
       const data = await response.json()
 
@@ -67,7 +70,7 @@ function Login() {
          <GoogleLoginButton
             onClick={() => {
                window.location.assign(
-                  "http://localhost:3030/users/oauth-google"
+                  `${process.env.REACT_APP_BACKEND_ENDPOINT}/users/oauth-google`
                )
             }}
          />

@@ -12,7 +12,7 @@ export default function Main() {
 
    useEffect(() => {
       // Altrimenti, li utilizzo per fare una chiamata API e recuperare i dati dell'utente
-      fetch(`http://localhost:3030/users/${userId}`, {
+      fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/users/${userId}`, {
          headers: { Authorization: `Bearer ${token}` },
       })
          .then((response) => response.json())
